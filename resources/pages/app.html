@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stack Overflow Scraper</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+  <link href="resources/css/tagify.css" rel="stylesheet">
+  <script src="resources/js/tagify.js"></script>
+
+
+    
+  <style type="text/css">
+    body {
+      overflow-x: hidden;
+      padding: 5%;
+    }
+    h2 {
+      text-align: center;
+    }
+    #youtube_search 
+    {
+      table-layout:fixed;
+      width: 98% !important; 
+    }
+    #youtube_search td
+    {
+        text-align: center; 
+    }
+    #youtube_search th
+    {
+        text-align: center; 
+    }
+    .form-control-borderless {
+    border: none;
+    }
+
+    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    
+    <h2>Stack OverFlow Scraper</h2>
+
+    <br/>
+    <form method="post" action='/scrape'>
+      <div class="row justify-content-center">
+                          <div class="col-12 col-md-10 col-lg-8">
+                              <form class="card card-sm">
+                                  <div class="card-body row no-gutters align-items-center">
+                                      <div class="col-auto">
+                                          <i class="fas fa-search h4 text-body"></i>
+                                      </div>
+                                      <div class="col">
+                                          <input class="form-control form-control-lg form-control-borderless" type="search" name="tags" placeholder="Search topics or keywords" id="tags" value="">
+                                      </div>
+                                      <div class="col-auto">
+                                          <button class="btn btn-lg btn-success" type="submit">Scrape It!</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+        var input = document.querySelector('input[name=tags]'),
+        tagify = new Tagify( input );
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<title>My chart.js Chart</title>
+</head>
+<body>
+	<div class="container">
+		<canvas id="myChart">
+			
+		</canvas>
+	</div>
+
+	<script type="text/javascript">
+		function loadJSON(callback) {   
+		  var xobj = new XMLHttpRequest();
+		  xobj.overrideMimeType("application/json");
+		  xobj.open('GET', 'resources/json/chart.json', true);
+		  xobj.onreadystatechange = function () {
+		    if (xobj.readyState == 4 && xobj.status == "200") {
+		      callback(JSON.parse(xobj.responseText));
+		    }
+		  };
+		  xobj.send(null);  
+		}
+
+		loadJSON(function(json) {
+		  var keyArray = json.map(function (el) { return el.language; });
+		  console.log(keyArray); // this will log out the json object
+
+		  var valueArray = json.map(function (el) { return el.questionstagged; });
+		  console.log(valueArray); // this will log out the json object
+
+
+		  let myChart = document.getElementById('myChart').getContext('2d');
+
+		// Global options
+		Chart.defaults.global.defaultFontFamily = 'Lato';
+		Chart.defaults.global.defaultFontSize = 18;
+		Chart.defaults.global.defaultFontColor = '#777';
+
+		let massPopChart = new Chart(myChart, {
+			type: 'bar', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+			data: {
+				labels: keyArray,
+				datasets: [{
+					label: 'Questions',
+					data: valueArray,
+					// backgroundColor: 'green',
+					backgroundColor:[
+					'blue',
+					'green',
+					'red',
+					'yellow',
+					'pink'
+					],
+					borderWidth: 1,
+					borderColor: 'grey',
+					hoverBorderWidth: 3,
+					hoverBorderColor: 'black'
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Number of Questions Per Language',
+					fontSize: 25
+				},
+				legend: {
+					display: false,
+					position: 'right',
+					labels: {
+						fontColor: 'black'
+					}
+				},
+				layout:{
+					padding: {
+						left: 50,
+						right:50,
+						bottom:50,
+						top:50
+					}
+				},
+				tooltips:{
+					enabled:true
+				}
+			}
+		});
+		  
+		});
+		
+
+	</script>
+</body>
+</html> 

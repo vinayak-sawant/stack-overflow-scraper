@@ -1,0 +1,19 @@
+{
+  "name": "my-first-app",
+  "version": "1.0.0",
+  "description": "This project is to do mysql database connections",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinayak Sawant",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.7.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.13.4",
+    "jsonframe-cheerio": "^3.0.1",
+    "mysql": "^2.10.2",
+    "request": "^2.88.0"
+  }
+}
